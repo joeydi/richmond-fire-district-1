@@ -1,1 +1,1 @@
-web: gunicorn localperks.wsgi --log-file -
+web: gunicorn waterdistrict.wsgi --log-file -
