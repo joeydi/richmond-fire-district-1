@@ -1,0 +1,106 @@
+{% extends "partials/base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center mb-5">
+        <div class="col-md-8">
+            <h1>Richmond Fire District #1</h1>
+        </div>
+        <div class="col-md-4 text-md-right">
+            <a href="/admin/waterdistrict/waterreading/add/" class="btn btn-info">Add Reading</a>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gallons / Day</h5>
+                    <p class="display-3">{{ latest_reading.rate|floatformat:"0"|intcomma }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Water Level</h5>
+                    <p class="display-3">{{ latest_reading.water_tank_level }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chlorinator Level</h5>
+                    <p class="display-3">{{ latest_reading.chlorinator_tank_level }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table mb-5">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Gallons / Day</th>
+                <th scope="col">Water Tank (In.)</th>
+                <th scope="col">Chlorinator Tank (L)</th>
+                <th scope="col">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reading in readings %}
+            <tr>
+                <th scope="row">{{ reading.created_at|date:"DATE_FORMAT" }}</th>
+                <td>{{ reading.water_gallons_used|intcomma }}</td>
+                <td>{{ reading.water_tank_level }}</td>
+                <td>{{ reading.chlorinator_tank_level }}</td>
+                <td>{{ reading.notes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <div class="bar-container"></div> -->
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    // Instantiate bar chart and container
+    const barChart = britecharts.bar();
+    const container = d3.select('.bar-container');
+
+    // Create Dataset with proper shape
+    const barData = [
+        { name: 'Luminous', value: 2 },
+        { name: 'Glittering', value: 5 },
+        { name: 'Intense', value: 4 },
+        { name: 'Radiant', value: 3 }
+    ];
+
+    // Configure chart
+    barChart
+        .margin({left: 100})
+        .isHorizontal(true)
+        .height(400)
+        .width(600);
+
+    container.datum(barData).call(barChart);
+
+    const redrawChart = () => {
+        const newContainerWidth = container.node() ? container.node().getBoundingClientRect().width : false;
+
+        // Setting the new width on the chart
+        barChart.width(newContainerWidth);
+
+        // Rendering the chart again
+        container.call(barChart);
+    };
+    const throttledRedraw = _.throttle(redrawChart, 200);
+
+    window.addEventListener("resize", throttledRedraw);
+</script>
+{% endblock %}
