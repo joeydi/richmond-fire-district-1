@@ -7,6 +7,7 @@ class WaterReadingAdmin(admin.ModelAdmin):
     list_display = [
         'created_at',
         'water_gallons_used',
+        'rate',
         'water_tank_level',
         'chlorinator_tank_level',
         'notes',
