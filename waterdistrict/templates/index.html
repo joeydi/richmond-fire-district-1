@@ -46,7 +46,7 @@
                 <th scope="col">Gallons / Day</th>
                 <th scope="col">Water Tank (In.)</th>
                 <th scope="col">Chlorinator Tank (L)</th>
-                <th scope="col">Notes</th>
+                <th scope="col" class="d-none d-md-table-cell">Notes</th>
             </tr>
         </thead>
         <tbody>
@@ -56,8 +56,13 @@
                 <td>{{ reading.rate|floatformat:"0"|intcomma }}</td>
                 <td>{{ reading.water_tank_level }}</td>
                 <td>{{ reading.chlorinator_tank_level }}</td>
-                <td>{{ reading.notes }}</td>
+                <td class="d-none d-md-table-cell">{{ reading.notes }}</td>
             </tr>
+            {% if reading.notes %}
+            <tr class="d-md-none">
+                <td colspan="5">{{ reading.notes }}</td>
+            </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>
