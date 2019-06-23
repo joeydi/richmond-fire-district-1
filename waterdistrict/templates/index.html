@@ -16,27 +16,27 @@
     </div>
 
     <div class="row mb-5">
-        <div class="col-md-4 mb-4">
+        <div class="col-sm-4 mb-4">
             <div class="card">
+                <h6 class="card-header">Gallons / Day</h6>
                 <div class="card-body">
-                    <h5 class="card-title">Gallons / Day</h5>
-                    <p class="display-3">{{ latest_reading.rate|floatformat:"0"|intcomma }}</p>
+                    <p class="display-4 mb-0">{{ latest_reading.rate|floatformat:"0"|intcomma }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-sm-4 mb-4">
             <div class="card">
+                <h6 class="card-header">Water Level</h6>
                 <div class="card-body">
-                    <h5 class="card-title">Water Level</h5>
-                    <p class="display-3">{{ latest_reading.water_tank_level }}</p>
+                    <p class="display-4 mb-0">{{ latest_reading.water_tank_level }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-sm-4 mb-4">
             <div class="card">
+                <h6 class="card-header">Chlorinator Level</h6>
                 <div class="card-body">
-                    <h5 class="card-title">Chlorinator Level</h5>
-                    <p class="display-3">{{ latest_reading.chlorinator_tank_level }}</p>
+                    <p class="display-4 mb-0">{{ latest_reading.chlorinator_tank_level }}</p>
                 </div>
             </div>
         </div>
@@ -46,15 +46,15 @@
         <thead>
             <tr>
                 <th scope="col">Date</th>
-                <th scope="col">
+                <th scope="col" style="text-align: right;">
                     <span class="d-lg-none">Usage</span>
                     <span class="d-none d-lg-block">Gallons / Day</span>
                 </th>
-                <th scope="col">
+                <th scope="col" style="text-align: right;">
                     <span class="d-lg-none">Water</span>
                     <span class="d-none d-lg-block">Water Tank (In.)</span>
                 </th>
-                <th scope="col">
+                <th scope="col" style="text-align: right;">
                     <span class="d-lg-none">Chlorine</span>
                     <span class="d-none d-lg-block">Chlorinator Tank (L)</span>
                 </th>
@@ -68,9 +68,9 @@
                     <span class="d-lg-none">{{ reading.created_at|date:"SHORT_DATE_FORMAT" }}</span>
                     <span class="d-none d-lg-block">{{ reading.created_at|date:"DATE_FORMAT" }}</span>
                 </th>
-                <td>{{ reading.rate|floatformat:"0"|intcomma }}</td>
-                <td>{{ reading.water_tank_level }}</td>
-                <td>{{ reading.chlorinator_tank_level }}</td>
+                <td style="text-align: right;">{{ reading.rate|floatformat:"0"|intcomma }}</td>
+                <td style="text-align: right;">{{ reading.water_tank_level }}</td>
+                <td style="text-align: right;">{{ reading.chlorinator_tank_level }}</td>
                 <td class="d-none d-md-table-cell">{{ reading.notes }}</td>
             </tr>
             {% if reading.notes %}
