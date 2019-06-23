@@ -53,7 +53,7 @@
             {% for reading in readings %}
             <tr>
                 <th scope="row">{{ reading.created_at|date:"DATE_FORMAT" }}</th>
-                <td>{{ reading.water_gallons_used|intcomma }}</td>
+                <td>{{ reading.rate|floatformat:"0"|intcomma }}</td>
                 <td>{{ reading.water_tank_level }}</td>
                 <td>{{ reading.chlorinator_tank_level }}</td>
                 <td>{{ reading.notes }}</td>
