@@ -52,7 +52,10 @@
         <tbody>
             {% for reading in readings %}
             <tr>
-                <th scope="row">{{ reading.created_at|date:"DATE_FORMAT" }}</th>
+                <th scope="row">
+                    <span class="d-lg-none">{{ reading.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+                    <span class="d-none d-lg-block">{{ reading.created_at|date:"DATE_FORMAT" }}</span>
+                </th>
                 <td>{{ reading.rate|floatformat:"0"|intcomma }}</td>
                 <td>{{ reading.water_tank_level }}</td>
                 <td>{{ reading.chlorinator_tank_level }}</td>
