@@ -4,10 +4,13 @@
 {% block content %}
 <div class="container py-5">
     <div class="row align-items-center mb-5">
-        <div class="col-md-8">
-            <h1>Readings from {{ latest_reading.created_at|date:"DATE_FORMAT" }}</h1>
+        <div class="col-md-9">
+            <h1>
+                <small class="text-muted d-block d-md-inline">Latest reading:</small>
+                {{ latest_reading.created_at|date:"DATE_FORMAT" }}
+            </h1>
         </div>
-        <div class="col-md-4 text-md-right">
+        <div class="col-md-3 text-md-right">
             <a href="/admin/waterdistrict/waterreading/add/" class="btn btn-info">Add Reading</a>
         </div>
     </div>
