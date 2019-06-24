@@ -5,19 +5,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                 <a class="nav-link" href="/">Readings</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if request.path == '/map/' %}active{% endif %}">
+                <a class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item {% if request.path == '/info/' %}active{% endif %}">
                 <a class="nav-link" href="/about">District Info</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if request.path == '/members/' %}active{% endif %}">
                 <a class="nav-link" href="/members">Members</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/maps">Maps</a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item {% if request.path == '/admin/' %}active{% endif %}">
                 <a class="nav-link" href="/admin">Admin</a>
             </li>
         </ul>

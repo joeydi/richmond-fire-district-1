@@ -1,0 +1,24 @@
+{% extends "partials/base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div id="map" style="width: 100vw; height: calc(100vh - 56px);"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js"></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9leWRpIiwiYSI6IlM5SE1BT0kifQ.gp3XWWKTK3xpw6dkg-zeUg';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/joeydi/cj8iyjspr3ils2ss1ooq80udp',
+        center: {
+            lng: -72.94305028900146,
+            lat: 44.36981370173825
+        },
+        zoom: 15
+    });
+</script>
+{% endblock %}
