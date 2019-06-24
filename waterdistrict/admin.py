@@ -24,6 +24,9 @@ class MemberAdmin(admin.ModelAdmin):
         'phone',
         'email',
     ]
+    search_fields = [
+        'owner',
+    ]
 
     def _get_address(self, obj):
         return format_html('%s<br />%s' % (obj.address_1, obj.address_2))
