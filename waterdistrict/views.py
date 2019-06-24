@@ -13,9 +13,12 @@ def index(request):
 
 
 def map(request):
-    context = {
-        'title': "Richmond Fire District #1",
-        'latest_reading': WaterReading.objects.first(),
-        'readings': WaterReading.objects.all()[:10],
-    }
-    return render(request, 'map.html', context)
+    return render(request, 'map.html')
+
+
+def info(request):
+    return render(request, 'info.html')
+
+
+def members(request):
+    return render(request, 'members.html')

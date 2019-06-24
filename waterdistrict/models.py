@@ -29,3 +29,19 @@ class WaterReading(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+
+class Member(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    owner = models.CharField(max_length=255)
+    address_1 = models.CharField(max_length=255, blank=True)
+    address_2 = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=12, blank=True)
+    email = models.EmailField(blank=True)
+
+    def __str__(self):
+        return self.owner
+
+    class Meta:
+        ordering = ['owner']
