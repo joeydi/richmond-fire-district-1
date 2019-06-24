@@ -7,6 +7,31 @@
             <h1>Members</h1>
         </div>
     </div>
+    <div class="row">
+        {% for member in members %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ member.owner }}</h5>
+                    <p class="card-text">
+                        {{ member.address_1 }}<br />
+                        {{ member.address_2 }}
+                    </p>
+                </div>
+                {% if member.phone or member.email %}
+                <ul class="list-group list-group-flush">
+                    {% if member.phone %}
+                    <li class="list-group-item">{{ member.phone }}</li>
+                    {% endif %}
+                    {% if member.email %}
+                    <li class="list-group-item">{{ member.email }}</li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 

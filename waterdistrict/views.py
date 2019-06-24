@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import WaterReading
+from .models import WaterReading, Member
 
 
 def index(request):
@@ -21,4 +21,7 @@ def info(request):
 
 
 def members(request):
-    return render(request, 'members.html')
+    context = {
+        'members': Member.objects.all(),
+    }
+    return render(request, 'members.html', context)
