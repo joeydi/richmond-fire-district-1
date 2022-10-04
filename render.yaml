@@ -1,5 +1,6 @@
 services:
     - name: rfd
+      plan: free
       type: web
       env: python
       repo: https://github.com/joeydi/richmond-fire-district-1
@@ -23,4 +24,5 @@ services:
 
 databases:
     - name: rfd-db
+      plan: free
       ipAllowList: []
