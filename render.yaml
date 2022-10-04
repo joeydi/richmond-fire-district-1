@@ -9,10 +9,6 @@ services:
       envVars:
           - key: DJANGO_SETTINGS_MODULE
             value: waterdistrict.settings
-          - key: DEBUG
-            value: True
-          - key: DEFAULT_FROM_EMAIL
-            value: joeydi731@gmail.com
           - key: SECRET_KEY
             generateValue: true
           - key: PYTHON_VERSION
