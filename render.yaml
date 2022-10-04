@@ -1,0 +1,26 @@
+services:
+    - name: rfd
+      type: web
+      env: python
+      repo: https://github.com/joeydi/richmond-fire-district-1
+      buildCommand: pip3 install -r requirements.txt && python manage.py migrate --no-input
+      startCommand: ALLOWED_HOSTS=".onrender.com" gunicorn --bind :$PORT --workers 4 --worker-class uvicorn.workers.UvicornWorker waterdistrict.asgi:application
+      envVars:
+          - key: DJANGO_SETTINGS_MODULE
+            value: waterdistrict.settings
+          - key: DEBUG
+            value: True
+          - key: DEFAULT_FROM_EMAIL
+            value: joeydi731@gmail.com
+          - key: SECRET_KEY
+            generateValue: true
+          - key: PYTHON_VERSION
+            value: 3.9.0
+          - key: DATABASE_URL
+            fromDatabase:
+                name: rfd-db
+                property: connectionString
+
+databases:
+    - name: rfd-db
+      ipAllowList: []
