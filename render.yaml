@@ -4,7 +4,7 @@ services:
       type: web
       env: python
       repo: https://github.com/joeydi/richmond-fire-district-1
-      buildCommand: pip3 install -r requirements.txt && python manage.py migrate --no-input
+      buildCommand: "./build.sh"
       startCommand: "gunicorn waterdistrict.wsgi:application"
       envVars:
           - key: DJANGO_SETTINGS_MODULE
