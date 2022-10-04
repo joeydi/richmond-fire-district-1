@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='zz&7p!&4#r_@p_+(%sb)qq47_i!7f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rfd.onrender.com']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
