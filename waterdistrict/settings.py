@@ -28,6 +28,8 @@ DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 # Application definition
 
